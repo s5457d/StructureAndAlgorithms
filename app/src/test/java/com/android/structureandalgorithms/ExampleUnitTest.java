@@ -24,9 +24,9 @@ public class ExampleUnitTest {
 
         byte c = 1;
         byte d = 2;
-        c = (byte) (c^d);
-        d = (byte) (c^d);
-        c = (byte) (c^d);
+        c = (byte) (c ^ d);
+        d = (byte) (c ^ d);
+        c = (byte) (c ^ d);
         System.out.println("c = " + c + " d = " + d);
         //1
 //        int temp = a;
@@ -100,4 +100,5 @@ public class ExampleUnitTest {
             System.out.println();
         }
     }
+
 }
