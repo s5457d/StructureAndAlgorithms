@@ -62,4 +62,16 @@ public class ListTest {
             list.addAll(linkedList);
         }
     }
+
+    @Test
+    public void singleListText(){
+        SingleList<Integer> SingleList = new SingleList<>();
+
+        SingleList.addLast(5);
+        SingleList.addLast(6);
+        SingleList.insert(4,0);
+        SingleList.insert(7,1);
+        SingleList.deleteIndex(0);
+        SingleList.display();
+    }
 }
