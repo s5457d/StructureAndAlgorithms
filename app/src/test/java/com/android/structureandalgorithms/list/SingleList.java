@@ -6,7 +6,7 @@ package com.android.structureandalgorithms.list;
  */
 public class SingleList<E> {
 
-    private int size = 0;
+    public int size = 0;
     // 链表头结点
     Node head = null;
     // 链表尾节点
@@ -100,17 +100,27 @@ public class SingleList<E> {
      *
      * @param index
      */
-    public void deleteIndex(int index) {
+    public Object deleteIndex(int index) {
+
+        if (size <= 0){
+            System.out.println("空链表");
+            return null;
+        }
+
         //检查index合法性
         if (index < 0 || index >= size) {
             System.out.println("插入的位置不合法,size : " + size + " index : " + index);
+            return null;
         }
 
         // 寻找删除点前驱
         Node prevNode = searchIndex(index);
+        Node cur;
+        Node res;
         if (prevNode == null) {
             // index 为0 在头结点位置删除
-            Node cur = head.next;
+            res = head;
+            cur = head.next;
             head.next = null;
             head = cur;
             if (size == 1) {
@@ -118,7 +128,8 @@ public class SingleList<E> {
                 tail = null;
             }
         } else {
-            Node cur = prevNode.next;
+            res = prevNode.next;
+            cur = prevNode.next;
             prevNode.next = cur.next;
             cur.next = null;
             if (size - 1 == index) {
@@ -126,6 +137,8 @@ public class SingleList<E> {
                 tail = prevNode;
             }
         }
+        size--;
+        return res.data;
     }
 
     /**
