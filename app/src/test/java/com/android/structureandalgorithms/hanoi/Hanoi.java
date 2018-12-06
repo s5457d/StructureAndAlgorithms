@@ -11,7 +11,7 @@ public class Hanoi {
 
     @Test
     public void test() {
-        Hanoi(3, 1, 2, 3);
+        Hanoi(25, 1, 2, 3);
     }
 
     /**
