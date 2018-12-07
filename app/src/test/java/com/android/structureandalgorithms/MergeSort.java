@@ -16,7 +16,7 @@ public class MergeSort {
 //            System.out.print(anArray + " ");
 //        }
 
-        int[] array = new int[]{1, 3, 5, 7, 9, 2, 4, 6, 8, 10};
+        int[] array = new int[]{8, 1, 3, 2, 0, 7, 6, 9, 4, 5};
         mergeSort(array, 0, array.length - 1);
         for (int anArray : array) {
             System.out.print(anArray + " ");
