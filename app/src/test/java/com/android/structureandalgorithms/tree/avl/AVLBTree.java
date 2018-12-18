@@ -1,5 +1,9 @@
 package com.android.structureandalgorithms.tree.avl;
 
+import org.junit.Test;
+
+import java.util.LinkedList;
+
 /**
  * @author by sunzhongda
  * @date 2018/12/18
@@ -116,6 +120,7 @@ public class AVLBTree<E extends Comparable<E>> {
 
     /**
      * 左边修正
+     *
      * @param t
      */
     public void leftBalance(Node<E> t) {
@@ -168,7 +173,8 @@ public class AVLBTree<E extends Comparable<E>> {
             Node<E> b;
             b = y.left;
             x.right = b;
-            b.parent = x;
+            if (b != null)
+                b.parent = x;
 
             y.parent = x.parent;
             Node<E> p = x.parent;
@@ -199,7 +205,8 @@ public class AVLBTree<E extends Comparable<E>> {
             Node<E> b;
             b = y.right;
             x.left = b;
-            b.parent = x;
+            if (b != null)
+                b.parent = x;
 
             y.parent = x.parent;
             if (x.parent == null) {
@@ -214,6 +221,33 @@ public class AVLBTree<E extends Comparable<E>> {
 
             y.right = x;
             x.parent = y;
+        }
+    }
+
+
+    @Test
+    public void test() {
+        Integer[] nums = {5, 8, 2, 0, 1, -2};
+        AVLBTree<Integer> tree = new AVLBTree<>();
+        for (int i = 0; i < nums.length; i++) {
+            tree.insertElement(nums[i]);
+        }
+
+        showAVL((Node<E>) tree.root);
+    }
+
+    private void showAVL(Node<E> root) {
+        LinkedList<Node> list = new LinkedList<>();
+        list.offer(root);
+        while (!list.isEmpty()) {
+            Node<E> node = list.pop();
+            System.out.println(node.element);
+            if (node.left != null) {
+                list.offer(node.left);
+            }
+            if (node.right != null) {
+                list.offer(node.right);
+            }
         }
     }
 
