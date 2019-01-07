@@ -56,11 +56,6 @@ public class DynamicProgramming {
                 i--;
                 j--;
             } else {
-//                if (array[i + 1][j + 1 - 1] > array[i + 1 - 1][j]) {
-//                    j--;
-//                } else {
-//                    i--;
-//                }
                 if (array[i + 1 - 1][j] > array[i + 1][j + 1 - 1]) {
                     i--;
                 } else {
@@ -72,10 +67,35 @@ public class DynamicProgramming {
         while (!result.isEmpty()) {
             System.out.print(result.pop() + "  ");
         }
+
+    }
+
+    public static int[] kmpNext(String dest) {
+        int[] next = new int[dest.length()];
+        next[0] = 0;
+
+        for (int i = 1, j = 0; i < dest.length(); i++) {
+            while (j > 0 && dest.charAt(j) != dest.charAt(i)) {
+                j = next[j - 1];
+            }
+            if (dest.charAt(i) == dest.charAt(j)) {
+                j++;
+            }
+            next[i] = j;
+        }
+
+        for (int k = 0; k < next.length; k++) {
+            System.out.print(next[k] + " ");
+        }
+
+        return next;
     }
 
     @Test
     public void test() {
-        getLCS("abcbdab", "bdcaba");
+//        getLCS("abcbdab", "bdcaba");
+        kmpNext("ababcaba");
     }
+
+
 }
